@@ -1,0 +1,38 @@
+.login{
+    position: absolute;
+    bottom: 0;
+    color: #f1f1f1;
+    width: 35%;
+    height: 25%;
+    left: 100px;
+    border: white;
+ }
+
+ .log_in {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .login::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+  }

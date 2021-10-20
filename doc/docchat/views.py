@@ -33,4 +33,4 @@ def template(request):
     return render(request,'template.html')
 
 def user(request):
-    return render(request,'User.html')
+    return render(request,'user.html')
