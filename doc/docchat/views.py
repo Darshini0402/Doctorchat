@@ -34,3 +34,5 @@ def template(request):
 
 def user(request):
     return render(request,'user.html')
+def patient(request):
+    return render(request,'patient.html')
