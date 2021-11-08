@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sign up</title>
+        <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            #h4{
+                color: white; 
+                t-family: 'Times New Roman';
+                Times, serif; 
+                font-weight: bold; 
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h4 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Doctor</h4>
+        <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
+            <a href="Login.html"><i class="material-icons" style="font-size: 40px; color: azure;">home</i></a>
+        </div>
+        <div class="bg-text" style="align-items: center;">
+            <form action="user.html" method="POST">
+                {% csrf_token %}
+                <h4>Username: <input type="text" placeholder="Username" name="uname"></h4>
+                <h4>Name: <input type="text" placeholder="name" name="name"></h4>
+                <h4>Email: <input type="email" placeholder="Email" name="mail"></h4>
+                <h4>Password: <input type="password" placeholder="Password" name="passw"></h4>
+                <input type="submit" value="Sign up">
+            </form>
+        </div>
+    </body>
+</html>

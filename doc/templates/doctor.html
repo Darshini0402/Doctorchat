@@ -20,13 +20,12 @@
             <a href="login.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
         </div>
         <div class="bg-text">
-            <form action="{% url 'login' %}" method="POST">
+            <form action="{% url 'doctor' %}" method="POST">
                 {% csrf_token %}
                 <h4>Username: <input type="text" placeholder="Username" name="username"></h4>
                 <h4>Password: <input type="password" placeholder="Password" name="password"></h4>
                 <input type="submit" placeholder="Login">
             </form>
         </div>
-        <h4>Do not have an account? <a href="sign.html" style="color:black;">Sign in</a></h4>
     </body>
 </html>
