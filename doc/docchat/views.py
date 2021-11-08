@@ -80,5 +80,4 @@ def user(request):
 def sign(request):
     return render(request,'sign.html')
 
-def doctorsign(request):
-    return render(request,'doctorsign.html')
+
