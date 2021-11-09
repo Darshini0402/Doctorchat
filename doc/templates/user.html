@@ -16,6 +16,9 @@
     </head>
     <body>
         <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
+        {% if message%}
+            <div style="text-align: center; font-size: larger; color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{message}}</div>
+        {% endif %}
         <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
             <a href="patient.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
         </div>
@@ -26,7 +29,7 @@
                 <h4>Password: <input type="password" placeholder="Password" name="password"></h4>
                 <input type="submit" placeholder="Login">
             </form>
+            <h4>Do not have an account? <a href="sign.html" style="color:black;">Sign in</a></h4>
         </div>
-        <h4>Do not have an account? <a href="sign.html" style="color:black;">Sign in</a></h4>
     </body>
 </html>

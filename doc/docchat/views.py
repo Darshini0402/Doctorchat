@@ -23,7 +23,7 @@ def login_view(request):
             #login(request, user)
             return HttpResponseRedirect(reverse("template"))
         else:
-            return render(request, "login.html",{
+            return render(request, "user.html",{
                 "message":"Invalid credentials"
             })
         #user = authenticate(request, username=username, password=password)
@@ -72,9 +72,17 @@ def user(request):
         email=request.POST["mail"]
         password=request.POST["passw"]
         cursor=connection.cursor()
-        cursor.execute('INSERT INTO docchat_user (username,name,email,password) VALUES (%s,%s,%s,%s)',[username,name,email,password])
-        connection.commit()
-        connection.close()  
+        cursor.execute('SELECT username FROM docchat_user WHERE username=(%s)',[username])
+        ans = cursor.fetchone()
+        if ans==None:
+            cursor.execute('INSERT INTO docchat_user (username,name,email,password) VALUES (%s,%s,%s,%s)',[username,name,email,password])
+            connection.commit()
+            connection.close()  
+            return HttpResponseRedirect(reverse("user"))
+        else:
+            return render(request, "sign.html",{
+                "message":"Username already exists"
+            })
     return render(request,'user.html')
 
 def sign(request):
