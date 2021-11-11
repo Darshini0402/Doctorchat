@@ -25,8 +25,8 @@ class doctor(models.Model):
     def __str__(self):
         return f" {self.username}"
 class appointment(models.Model):
-    docname=models.CharField(max_length=50)
-    patID= models.OneToOneField('user',on_delete=models.CASCADE,blank=True)
+    #docname=models.CharField(max_length=50)
+    #patID= models.OneToOneField('user',on_delete=models.CASCADE,blank=True)
     current_date=models.DateField(max_length=50)
     current_time=models.TimeField(max_length=50)
     
