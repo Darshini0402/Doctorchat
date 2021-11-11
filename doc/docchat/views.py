@@ -21,7 +21,7 @@ def login_view(request):
         connection.close()  
         if password==pas[0]:
             #login(request, user)
-            return HttpResponseRedirect(reverse("template"))
+            return HttpResponseRedirect(reverse("appoint"))
         else:
             return render(request, "user.html",{
                 "message":"Invalid credentials"
@@ -88,4 +88,7 @@ def user(request):
 def sign(request):
     return render(request,'sign.html')
 
-
+def appoint(request):
+    return render(request,'appoint.html',{
+        
+    })
