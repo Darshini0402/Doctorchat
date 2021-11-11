@@ -36,3 +36,7 @@
     padding: 10px;
     text-align: center;
   }
+  .nav nav-tabs
+  {
+    font-size:40%;
+  }
