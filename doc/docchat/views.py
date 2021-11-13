@@ -105,7 +105,7 @@ def template(request):
     current_time = time.strftime("%H:%M:%S", t)
     current_date = datetime.date.today()
     cursor=connection.cursor()
-    cursor.execute('INSERT INTO docchat_appointment (current_time,current_date) VALUES (%s,%s)',[current_time,current_date])
+    cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
     connection.commit()
     connection.close()  
     return render(request,'template.html')

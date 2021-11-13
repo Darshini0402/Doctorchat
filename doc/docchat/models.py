@@ -34,8 +34,8 @@ class doctor(models.Model):
 class appointment(models.Model):
     #docname=models.CharField(max_length=50)
     #patID= models.OneToOneField('user',on_delete=models.CASCADE,blank=True)
-    current_date=models.DateField(max_length=50)
-    current_time=models.TimeField(max_length=50)
+    Date=models.DateField(max_length=50)
+    Time=models.TimeField(max_length=50)
     
 #class schedule(models.Model):
     
