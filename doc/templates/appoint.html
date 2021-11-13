@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Patient Portal</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'login.css' %}">
+        <script>
+            function changeVal()
+            {
+                var f = document.getElementById("spl");
+                var chosenSpl = f.options[f.selectedIndex].value;
+                {% comment %} document.getElementById("showSplList").innerHTML += '<p>' + chosenSpl + '</p>';
+                document.getElementById("chosenSpl").className="show"; {% endcomment %}
+            }
+        </script>
+    </head>
+    <body>
+        <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Appointment Booking</h1>
+        <a href="{% url 'logout' %}" style="position: absolute; top: 8px; right: 16px; font-size: 18px;">Log Out</a>
+        <h4 style="display: inline-block; vertical-align: middle; margin: 10px 0;"> Please choose your preferred speciality :</h4>
+        <form action="" method="POST">
+        {% csrf_token %}
+            <div style="display: inline-block; vertical-align: middle; margin: 10px 0;">
+                <select name="spl" id="spl" onchange="changeVal()">
+                    <option value=""selected>Select speciality</option>
+                    <option value="gp">General Physician</option>
+                    <option value="gy">Gynaecologist</option>
+                    <option value="or">Orthopedic</option>
+                    <option value="der">Dermatologist</option>
+                    <option value="ent">ENT</option>
+                    <option value="op">Ophthalmologist</option>
+                    <option value="pe">Pediatrician</option>
+                    <option value="ur">Urologist</option>
+                    <option value="ps">Psychiatrist</option>
+                    <option value="den">Dentist</option>
+                    <option value="ph">Physiotherapist</option>
+                </select>
+            </div>
+            <input type="submit" placeholder="Login">
+        </form>
+        <div id="chosenSpl" class="hide">
+            <div id="showSplList"></div>
+        </div>
+        <form action="chat.html" method="POST">
+        {% csrf_token %}
+            {% for d in doc %}
+                {% if d.spl == spl %}
+                    <div class='bg-text' style="position: relative; top: 70px;">
+                        Name : {{ d.fname }} {{ d.lname }} <br></br>
+                        Experience : {{ d.exp }} years <t></t>
+                        Languages : {{ d.lang }} <br></br>
+                        Fee : Rs. {{ d.fee }}
+                        City : {{ d.city }} <br></br>
+                        <label for="cl_{{ flight.flight_no }}">{{ cl.business }}</label>
+                        <span><button name="choice" value="{{ flight.sno }}" style="left:30px; font-size:12px" class="btn" type="submit" name="action">Instant Appointment</button></span><br>
+                        <label for="choice_{{ flight.flight_no }}">{{ choice.flight_no }}</label>
+                    </div>
+                    <br></br>
+                {% endif %}
+            {% endfor %}
+        </form>
+    </body>
+</html>

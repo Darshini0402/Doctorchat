@@ -4,8 +4,14 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db import connection
+from datetime import datetime
+from django.http import HttpResponse
+import time
+from django.http import HttpResponse
+import datetime
 
-# Create your views here.
+from .models import doctor
+# Create your views here.saz
 
 def login_view(request):
     if request.method == "POST":
@@ -16,7 +22,7 @@ def login_view(request):
         cursor=connection.cursor()
         cursor.execute('SELECT password FROM docchat_user WHERE username=(%s)',[username])
         pas = cursor.fetchone()
-        print(pas[0])
+       # print(pas[0])
         connection.commit()
         connection.close()  
         if password==pas[0]:
@@ -44,18 +50,17 @@ def logout_view(request):
                 "message": "Logged Out"
             })
 
-def template(request):
-    return render(request,'template.html')
-
-def doctor(request):
+def doc(request):
     if request.method == "POST":
         # Accessing username and password from form data
         username = request.POST["username"]
         password = request.POST["password"]
+        #print(fname)
         # Check if username and password are correct, returning User object if so
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
+        doctor = authenticate(request, username=username, password=password)
+        #print(doctor)
+        if doctor is not None:
+            login(request, doctor)
             #return render(request,'quiz.html')
             return HttpResponseRedirect(reverse("template"))
             # Otherwise, return login page again with new context
@@ -89,6 +94,23 @@ def sign(request):
     return render(request,'sign.html')
 
 def appoint(request):
-    return render(request,'appoint.html',{
-        
-    })
+    if request.method == "POST":
+        spl = request.POST["spl"]
+        return render(request,'appoint.html',{ "spl":spl, "doc":doctor.objects.all()})
+    return render(request,'appoint.html',{ "doc":doctor.objects.all() })
+
+
+def template(request):
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
+    current_date = datetime.date.today()
+    cursor=connection.cursor()
+    cursor.execute('INSERT INTO docchat_appointment (current_time,current_date) VALUES (%s,%s)',[current_time,current_date])
+    connection.commit()
+    connection.close()  
+    return render(request,'template.html')
+
+
+
+
+
