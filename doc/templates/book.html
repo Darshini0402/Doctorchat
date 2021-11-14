@@ -18,9 +18,9 @@
     <body>
         <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Appointment Booking</h1>
         <a href="{% url 'logout' %}" style="position: absolute; top: 8px; right: 16px; font-size: 18px;">Log Out</a>
-        <h4 style="display: inline-block; vertical-align: middle; margin: 10px 0;"> Please choose your preferred speciality :</h4>
         <form action="" method="POST">
         {% csrf_token %}
+            <h4 style="display: inline-block; vertical-align: middle; margin: 10px 0;"> Please choose your preferred speciality :</h4>
             <div style="display: inline-block; vertical-align: middle; margin: 10px 0;">
                 <select name="spl" id="spl" onchange="changeVal()">
                     <option value=""selected>Select speciality</option>
@@ -42,7 +42,8 @@
         <div id="chosenSpl" class="hide">
             <div id="showSplList"></div>
         </div>
-        <form action="chat.html" method="POST">
+        <br></br>
+        <form action="appointment.html" method="POST">
         {% csrf_token %}
             {% for d in doc %}
                 {% if d.spl == spl %}
@@ -52,9 +53,10 @@
                         Languages : {{ d.lang }} <br></br>
                         Fee : Rs. {{ d.fee }}
                         City : {{ d.city }} <br></br>
-                        <label for="cl_{{ flight.flight_no }}">{{ cl.business }}</label>
-                        <span><button name="choice" value="{{ flight.sno }}" style="left:30px; font-size:12px" class="btn" type="submit" name="action">Instant Appointment</button></span><br>
-                        <label for="choice_{{ flight.flight_no }}">{{ choice.flight_no }}</label>
+                        <label for="cl_{{ d.id }}"></label> 
+                        <span><button name="instant" value="{{ d.id }}" style="left:30px; font-size:12px" class="btn" type="submit" name="action">Instant Appointment</button></span>
+                        <span><button name="later" value="{{ d.id }}" style="left:30px; font-size:12px" class="btn" type="submit" name="action">Later Appointment</button></span><br>
+                        {% comment %} <label for="choice_{{ flight.flight_no }}">{{ choice.flight_no }}</label> {% endcomment %}
                     </div>
                     <br></br>
                 {% endif %}

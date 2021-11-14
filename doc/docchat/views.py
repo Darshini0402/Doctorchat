@@ -27,7 +27,7 @@ def login_view(request):
         connection.close()  
         if password==pas[0]:
             #login(request, user)
-            return HttpResponseRedirect(reverse("appoint"))
+            return HttpResponseRedirect(reverse("book"))
         else:
             return render(request, "user.html",{
                 "message":"Invalid credentials"
@@ -93,12 +93,23 @@ def user(request):
 def sign(request):
     return render(request,'sign.html')
 
-def appoint(request):
+def book(request):
     if request.method == "POST":
         spl = request.POST["spl"]
-        return render(request,'appoint.html',{ "spl":spl, "doc":doctor.objects.all()})
-    return render(request,'appoint.html',{ "doc":doctor.objects.all() })
+        return render(request,'book.html',{ "spl":spl, "doc":doctor.objects.all()})
+    return render(request,'book.html',{ "doc":doctor.objects.all() })
 
+def appointment(request):
+    if 'instant' in request.POST:
+        id = request.POST.get('instant')
+        return render(request,'chat.html',{"id":id})
+    elif 'later' in request.POST:
+        id = request.POST.get('later')
+        return render(request,'appointment.html',{"id":id,"doc":doctor.objects.all()})   
+    return render(request,'appointment.html')
+
+def chat(request):
+    return render(request,'chat.html')
 
 def template(request):
     t = time.localtime()
