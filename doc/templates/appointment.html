@@ -11,10 +11,12 @@
         <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
             <a href="login.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
         </div>
-        {% for d in doc %}
-            {% if d.id == id %}
-                <h1>{{ d.fname }} {{ d.lname }}</h1>
-            {% endif %}
-        {% endfor %}
+        <form action="billing.html" method="POST">
+            {% for d in doc %}
+                {% if d.id == id %}
+                    <h1>{{ d.fname }} {{ d.lname }}</h1>
+                {% endif %}
+            {% endfor %}
+        </form>
     </body>
 </html>

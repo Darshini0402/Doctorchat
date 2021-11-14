@@ -111,6 +111,9 @@ def appointment(request):
 def chat(request):
     return render(request,'chat.html')
 
+def billing(request):
+    return render(request,'billing.html')
+
 def template(request):
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)

@@ -10,4 +10,5 @@ urlpatterns = [
     path('template.html',views.template,name='template'),
     path('appointment.html',views.appointment,name='appointment'),
     path('chat.html',views.chat,name='chat'),
+    path('billing.html',views.billing,name='billing'),
 ]
