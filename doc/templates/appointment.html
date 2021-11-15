@@ -12,8 +12,9 @@
             <a href="login.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
         </div>
         <form action="billing.html" method="POST">
+            {% csrf_token %}
             {% for d in doc %}
-                {% if d.id == id %}
+                {% if d.username == un %}
                     <h1>{{ d.fname }} {{ d.lname }}</h1>
                 {% endif %}
             {% endfor %}

@@ -25,9 +25,13 @@ def login_view(request):
        # print(pas[0])
         connection.commit()
         connection.close()  
-        if password==pas[0]:
+        if pas == None:
+            return render(request, "user.html",{
+                "message":"User does not exist"
+            })
+        elif password==pas[0]:
             #login(request, user)
-            return HttpResponseRedirect(reverse("book"))
+            return HttpResponseRedirect(reverse("option"))
         else:
             return render(request, "user.html",{
                 "message":"Invalid credentials"
@@ -44,6 +48,9 @@ def login_view(request):
         #     })
     return render(request, "login.html")
 
+def option(request):
+    return render(request,'option.html')
+
 def logout_view(request):
     logout(request)
     return render(request, "login.html", {
@@ -55,20 +62,43 @@ def doc(request):
         # Accessing username and password from form data
         username = request.POST["username"]
         password = request.POST["password"]
-        #print(fname)
         # Check if username and password are correct, returning User object if so
-        doctor = authenticate(request, username=username, password=password)
-        #print(doctor)
-        if doctor is not None:
-            login(request, doctor)
-            #return render(request,'quiz.html')
+        cursor=connection.cursor()
+        cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[username])
+        pas = cursor.fetchone()
+       # print(pas[0])
+        connection.commit()
+        connection.close()  
+        if pas == None:
+            return render(request, "user.html",{
+                "message":"User does not exist"
+            })
+        elif password==pas[0]:
+            #login(request, user)
             return HttpResponseRedirect(reverse("template"))
-            # Otherwise, return login page again with new context
         else:
-            return render(request, "login.html", {
-                "message": "Invalid Credentials"
+            return render(request, "user.html",{
+                "message":"Invalid credentials"
             })
     return render(request, "doctor.html")
+    # if request.method == "POST":
+    #     # Accessing username and password from form data
+    #     username = request.POST["username"]
+    #     password = request.POST["password"]
+    #     #print(fname)
+    #     # Check if username and password are correct, returning User object if so
+    #     doctor = authenticate(request, username=username, password=password)
+    #     #print(doctor)
+    #     if doctor is not None:
+    #         login(request, doctor)
+    #         #return render(request,'quiz.html')
+    #         return HttpResponseRedirect(reverse("template"))
+    #         # Otherwise, return login page again with new context
+    #     else:
+    #         return render(request, "login.html", {
+    #             "message": "Invalid Credentials"
+    #         })
+    # return render(request, "doctor.html")
 
 def user(request):
     if request.method == "POST":
@@ -101,11 +131,11 @@ def book(request):
 
 def appointment(request):
     if 'instant' in request.POST:
-        id = request.POST.get('instant')
-        return render(request,'chat.html',{"id":id})
+        un = request.POST.get('instant')
+        return render(request,'chat.html',{"un":un})
     elif 'later' in request.POST:
-        id = request.POST.get('later')
-        return render(request,'appointment.html',{"id":id,"doc":doctor.objects.all()})   
+        un = request.POST.get('later')
+        return render(request,'appointment.html',{"un":un, "doc":doctor.objects.all()})   
     return render(request,'appointment.html')
 
 def chat(request):
@@ -115,13 +145,13 @@ def billing(request):
     return render(request,'billing.html')
 
 def template(request):
-    t = time.localtime()
-    current_time = time.strftime("%H:%M:%S", t)
-    current_date = datetime.date.today()
-    cursor=connection.cursor()
-    cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
-    connection.commit()
-    connection.close()  
+    # t = time.localtime()
+    # current_time = time.strftime("%H:%M:%S", t)
+    # current_date = datetime.date.today()
+    # cursor=connection.cursor()
+    # cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
+    # connection.commit()
+    # connection.close()  
     return render(request,'template.html')
 
 
