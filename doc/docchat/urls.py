@@ -12,4 +12,6 @@ urlpatterns = [
     path('chat.html',views.chat,name='chat'),
     path('billing.html',views.billing,name='billing'),
     path('option.html',views.option,name="option"),
+    path('edit.html',views.edit,name='edit'),
+    path('cancel.html',views.cancel,name='cancel.html'),
 ]

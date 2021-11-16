@@ -49,7 +49,21 @@ def login_view(request):
     return render(request, "login.html")
 
 def option(request):
+    # if request.method == "POST":
+    #     op = request.POST["option"]
+    #     if op=="appoint":
+    #         return render(request,'book.html')
+    #     elif op=="edit":
+    #         return render(request,'edit.html')
+    #     elif op=="cancel":
+    #         return render(request,"cancel.html")
     return render(request,'option.html')
+
+def edit(request):
+    return render(request,'edit.html')
+
+def cancel(request):
+    return render(request,'cancel.html')
 
 def logout_view(request):
     logout(request)
@@ -132,11 +146,13 @@ def book(request):
 def appointment(request):
     if 'instant' in request.POST:
         un = request.POST.get('instant')
+        print(un)
         return render(request,'chat.html',{"un":un})
+        #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
         un = request.POST.get('later')
         return render(request,'appointment.html',{"un":un, "doc":doctor.objects.all()})   
-    return render(request,'appointment.html')
+    # return render(request,'appointment.html')
 
 def chat(request):
     return render(request,'chat.html')
