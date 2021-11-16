@@ -24,7 +24,8 @@ def login_view(request):
         pas = cursor.fetchone()
        # print(pas[0])
         connection.commit()
-        connection.close()  
+        connection.close()
+        print(pas)  
         if password==pas[0]:
             #login(request, user)
             return HttpResponseRedirect(reverse("book"))
@@ -114,17 +115,10 @@ def chat(request):
 def billing(request):
     return render(request,'billing.html')
 
-def template(request):
-    t = time.localtime()
-    current_time = time.strftime("%H:%M:%S", t)
-    current_date = datetime.date.today()
-    cursor=connection.cursor()
-    cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
-    connection.commit()
-    connection.close()  
-    return render(request,'template.html')
-
-
-
-
-
+def lappointment(request):
+    if request.method == "POST":
+        Date=request.POST["date"]
+        Time=request.POST["time"]
+        cursor=connection.cursor()
+        cursor.execute('INSERT INTO docchat_Lateappointment (Date,Time) VALUES (%s,%s)',[Date,Time])
+        connection.commit()

@@ -7,4 +7,4 @@ from . import models
 
 admin.site.register(models.user)
 admin.site.register(models.doctor)
-admin.site.register(models.appointment)
+admin.site.register(models.Lateappointment)
