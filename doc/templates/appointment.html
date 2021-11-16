@@ -54,30 +54,24 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label for="inputDate">Date</label>
-                                <input type="text" class="form-control" id="inputDate" placeholder="Date">
+                                <input type="date" class="form-control" id="inputDate" placeholder="Date">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputTime">Time</label>
-                                <input type="text" class="form-control" id="inputTime">
+                                <input type="time" class="form-control" id="inputTime">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="inputAddress">Symptoms</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Symptoms">
+                                <label for="inputSymptoms">Symptoms</label>
+                                <input type="text" class="form-control" id="inputSymptoms" placeholder="Symptoms">
                             </div>
                         </div>
                     </div>
                     <br></br>
                 {% endif %}
             {% endfor %}
-            <button type="button" class="btn btn-primary">Proceed with Billing</button>
-        </form>
-        <form>
-            Select the date and time for booking:
-            <br><br>
-            Date: <input type="date"><br><br>
-            Time: <input type="time">
+            <button type="submit" class="btn btn-primary">Proceed with Billing</button>
         </form>
     </body>
 </html>
