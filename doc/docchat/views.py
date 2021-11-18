@@ -10,17 +10,18 @@ import time
 from django.http import HttpResponse
 import datetime
 
-from .models import doctor
+from .models import doctor, patappointment,user
 # Create your views here.saz
 
 def login_view(request):
     if request.method == "POST":
         # Accessing username and password from form data
-        username = request.POST["username"]
-        password = request.POST["password"]
+        global uusername
+        uusername = request.POST.get("username")
+        upassword = request.POST["password"]
         # Check if username and password are correct, returning User object if so
         cursor=connection.cursor()
-        cursor.execute('SELECT password FROM docchat_user WHERE username=(%s)',[username])
+        cursor.execute('SELECT password FROM docchat_user WHERE username=(%s)',[uusername])
         pas = cursor.fetchone()
        # print(pas[0])
         connection.commit()
@@ -29,7 +30,7 @@ def login_view(request):
             return render(request, "user.html",{
                 "message":"User does not exist"
             })
-        elif password==pas[0]:
+        elif upassword==pas[0]:
             #login(request, user)
             return HttpResponseRedirect(reverse("option"))
         else:
@@ -72,13 +73,14 @@ def logout_view(request):
             })
 
 def doc(request):
+    global dusername
     if request.method == "POST":
         # Accessing username and password from form data
-        username = request.POST["username"]
-        password = request.POST["password"]
+        dusername = request.POST["username"]
+        dpassword = request.POST["password"]
         # Check if username and password are correct, returning User object if so
         cursor=connection.cursor()
-        cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[username])
+        cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[dusername])
         pas = cursor.fetchone()
        # print(pas[0])
         connection.commit()
@@ -87,7 +89,7 @@ def doc(request):
             return render(request, "user.html",{
                 "message":"User does not exist"
             })
-        elif password==pas[0]:
+        elif dpassword==pas[0]:
             #login(request, user)
             return HttpResponseRedirect(reverse("template"))
         else:
@@ -144,29 +146,40 @@ def book(request):
     return render(request,'book.html',{ "doc":doctor.objects.all() })
 
 def appointment(request):
+    global unl
     if 'instant' in request.POST:
         un = request.POST.get('instant')
         print(un)
         return render(request,'chat.html',{"un":un})
         #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
-        un = request.POST.get('later')
-        return render(request,'appointment.html',{"un":un, "doc":doctor.objects.all()})   
+        global unl
+        unl = request.POST.get('later')
+        print(unl)
+        return render(request,'appointment.html',{"un":unl, "doc":doctor.objects.all()})   
     # return render(request,'appointment.html')
 
 def chat(request):
     return render(request,'chat.html')
 
 def billing(request):
+    if request.method == "POST":
+        pname = request.POST.get('inputname')
+        page = request.POST.get('inputage')
+        paadhar = request.POST.get('inputaadhar')
+        pphone = request.POST.get('inputphone')
+        psymptoms = request.POST.get('inputSymptoms')
+        Date=request.POST.get("inputDate")
+        Time=request.POST.get("inputTime")
+        cursor=connection.cursor()
+        cursor.execute('INSERT INTO docchat_patappointment (pname,page,paadhar,pphone,Date,Time,psymptoms,duname_id,uuname_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',[pname,page,paadhar,pphone,Date,Time,psymptoms,unl,uusername])
+        connection.commit()
     return render(request,'billing.html')
 
 def lappointment(request):
-    if request.method == "POST":
-        Date=request.POST["date"]
-        Time=request.POST["time"]
-        cursor=connection.cursor()
-        cursor.execute('INSERT INTO docchat_Lateappointment (Date,Time) VALUES (%s,%s)',[Date,Time])
-        connection.commit()
+    return render(request,'appointment.html')
+
+
 def template(request):
     # t = time.localtime()
     # current_time = time.strftime("%H:%M:%S", t)
@@ -175,7 +188,7 @@ def template(request):
     # cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
     # connection.commit()
     # connection.close()  
-    return render(request,'template.html')
+    return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dusername})
 
 
 

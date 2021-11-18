@@ -41,19 +41,27 @@
                           <tr>
                             <th scope="col">S.NO.</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email ID</th>
-                            <th scope="col">Schedule</th>
+                            <th scope="col">Phone number</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Symptoms</th>
                             <th scope="col">Delete appointment</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-primary">Delete</button></td>
-                          </tr>
+                          {% for a in appointment %}
+                            {% if a.duname_id == doc %}
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>{{ a.pname }}</td>
+                                <td>{{ a.pphone }}</td>
+                                <td>{{ a.Date }}</td>
+                                <td>{{ a.Time }}</td>
+                                <td>{{ a.psymptoms }}</td>
+                                <td><button type="button" class="btn btn-primary">Delete</button></td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
                         </tbody>
                     </table>
                 </div>
