@@ -14,6 +14,7 @@ from .models import doctor, patappointment,user
 # Create your views here.saz
 
 def login_view(request):
+    global uusername
     if request.method == "POST":
         # Accessing username and password from form data
         global uusername
@@ -61,10 +62,10 @@ def option(request):
     return render(request,'option.html')
 
 def edit(request):
-    return render(request,'edit.html')
+    return render(request,'edit.html',{"appointment":patappointment.objects.all(),"user":uusername,"doc":doctor.objects.all()})
 
 def cancel(request):
-    return render(request,'cancel.html')
+    return render(request,'cancel.html',{"appointment":patappointment.objects.all(),"user":uusername,"doc":doctor.objects.all()})
 
 def logout_view(request):
     logout(request)
@@ -175,9 +176,6 @@ def billing(request):
         cursor.execute('INSERT INTO docchat_patappointment (pname,page,paadhar,pphone,Date,Time,psymptoms,duname_id,uuname_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',[pname,page,paadhar,pphone,Date,Time,psymptoms,unl,uusername])
         connection.commit()
     return render(request,'billing.html')
-
-def lappointment(request):
-    return render(request,'appointment.html')
 
 
 def template(request):

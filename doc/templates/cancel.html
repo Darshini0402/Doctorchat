@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Cancel Booking</title>
+        <title>Doctor Appointment Booking and Chat System</title>
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="admin/css/reg.css" type="text/css">
@@ -27,38 +27,48 @@
           }
         </style>
         <script>
-            function cancel()
-            {
-                alert("This appointment would be canceled permenantly. Would you like to continue?");
-            }
+          function cancel()
+          {
+              alert("The selected appointment would be canceled. Are you sure you want to cancel it?");
+          }
         </script>
     </head>
     <body>
         <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Doctor Appointment Booking and Chat System</h1>
         <div class="container">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#menu1">Bookings</a></li>
+                <li class="active"><a data-toggle="tab" href="#menu1">Appointments</a></li>
             </ul>
             <div class="tab-content">
                 <div id="menu1" class="tab-pane fade in active">
                     <table class="table table-striped table-dark">
                         <thead>
                           <tr>
-                            <th scope="col">Doctor Name</th>
-                            <th scope="col">Email ID</th>
+                            <th scope="col">S.NO.</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Date</th>
                             <th scope="col">Time</th>
-                            <th scope="col">Delete appointment</th>
+                            <th scope="col">Doctor Name</th>
+                            <th scope="col">Cancel appointment</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-primary" onclick="cancel()">Cancel</button></td>
-                          </tr>
+                          {% for a in appointment %}
+                            {% if a.uuname_id == user %}
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>{{ a.pname }}</td>
+                                <td>{{ a.Date }}</td>
+                                <td>{{ a.Time }}</td>
+                                {% for d in doc %}
+                                  {% if a.duname_id == d.username%}
+                                    <td>{{ d.fname }} {{ d.lname }}</td>
+                                  {% endif %}
+                                {% endfor %}
+                                <td><button type="button" class="btn btn-primary" onclick="cancel()">Cancel</button></td>
+                              </tr>
+                            {% endif %}
+                          {% endfor %}
                         </tbody>
                     </table>
                 </div>
