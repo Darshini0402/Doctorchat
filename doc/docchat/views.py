@@ -195,6 +195,8 @@ def template(request):
     # cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
     # connection.commit()
     # connection.close()  
+    if 'instant' in request.POST:
+        return render(request,'chat/index.html')
     return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dusername})
 
 def feedback(request):
