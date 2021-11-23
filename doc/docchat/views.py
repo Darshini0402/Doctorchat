@@ -191,13 +191,5 @@ def template(request):
     # connection.close()  
     return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dusername})
 
-'''def billing(request):
-    if request.method=="POST":
-        #doc=doctor.objects.filter()
-        docname=doctor.objects.fname
-        cursor=connection.cursor()
-        cursor.execute('SELECT fee FROM docchat_doctor WHERE fname=(%s)',[docname])
-        tot = cursor.fetchone()
-        #tot=doc.objects.values_list('fee')
-    #print(amt)
-    return render(request,'billing.html',{"amt":tot})'''
+def feedback(request):
+    return render(request,'feedback.html')

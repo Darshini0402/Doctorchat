@@ -133,7 +133,7 @@ body {
       </div>
   
       <div class="centre-content">
-        <form action="billing.html" method="POST">
+        <form action="feedback.html" method="POST">
             {% csrf_token %}
             {% for d in doc %}
                 {% if d.username == un %}
@@ -159,7 +159,7 @@ body {
       </div>
       
     
-      <form action='billing.html' method="POST">
+      <form action='feedback.html' method="POST">
         {% csrf_token %}
     <div class="card-details">
         <p>Pay using Credit or Debit card</p>
