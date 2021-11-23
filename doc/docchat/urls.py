@@ -14,4 +14,6 @@ urlpatterns = [
     path('edit.html',views.edit,name='edit'),
     path('cancel.html',views.cancel,name='cancel.html'),
     path('template.html',views.template,name='template'),
+    path('feedback.html',views.feedback,name='feedback'),
+   # path('billing.html',views.transaction,name='transaction'),
 ]
