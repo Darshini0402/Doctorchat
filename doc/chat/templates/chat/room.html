@@ -40,8 +40,11 @@
                 </div>
             </div>
         </section>
+            {{ room_name|json_script:"json_script-roomname" }}
+            {{ username|json_script:"json-username" }}
         <script>
-            
+            const roomName = JSON.parse(document.getElementByID('json-roomname').textContent);
+            const userName = JSON.parse(document.getElementByID('json-username').textContent);
         </script>
     </body>
 </html>
