@@ -27,7 +27,7 @@ class doctor(models.Model):
     spl = models.CharField(max_length=4)
     #default="hi"
     def __str__(self):
-        return f" {self.username}"
+        return f" {self.fname}"
 
 class patappointment(models.Model):
     pid = models.AutoField(primary_key=True)

@@ -163,6 +163,7 @@ def appointment(request):
 def chat(request):
     return render(request,'chat.html')
 
+
 def billing(request):
     if request.method == "POST":
         pname = request.POST.get('inputname')
@@ -175,8 +176,10 @@ def billing(request):
         cursor=connection.cursor()
         cursor.execute('INSERT INTO docchat_patappointment (pname,page,paadhar,pphone,Date,Time,psymptoms,duname_id,uuname_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',[pname,page,paadhar,pphone,Date,Time,psymptoms,unl,uusername])
         connection.commit()
-    return render(request,'billing.html')
-
+    global uni
+    uni = request.POST.get('later')
+    print(uni)
+    return render(request,'billing.html',{"un":unl, "doc":doctor.objects.all()})
 
 def template(request):
     # t = time.localtime()
@@ -188,7 +191,13 @@ def template(request):
     # connection.close()  
     return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dusername})
 
-
-
-
-
+'''def billing(request):
+    if request.method=="POST":
+        #doc=doctor.objects.filter()
+        docname=doctor.objects.fname
+        cursor=connection.cursor()
+        cursor.execute('SELECT fee FROM docchat_doctor WHERE fname=(%s)',[docname])
+        tot = cursor.fetchone()
+        #tot=doc.objects.values_list('fee')
+    #print(amt)
+    return render(request,'billing.html',{"amt":tot})'''
