@@ -30,6 +30,11 @@
           function cancel()
           {
               alert("The selected appointment would be canceled. Are you sure you want to cancel it?");
+              var td = event.target.parentNode; 
+              var tr = td.parentNode; // the row to be removed
+              tr.parentNode.removeChild(tr);
+              //{% comment %} var element = el;
+              //element.remove(); {% endcomment %}
           }
         </script>
     </head>
@@ -53,10 +58,16 @@
                           </tr>
                         </thead>
                         <tbody>
+                          {% comment %} {% set counter = {'counter1': 0,} %}
+                          {% macro increment(dct, key, inc=1)%}
+                              {% if dct.update({key: dct[key] + inc}) %} {% endif %}
+                          {% endmacro %} {% endcomment %}
                           {% for a in appointment %}
                             {% if a.uuname_id == user %}
+                            <form action="" method="POST">
+                            {% csrf_token %}
                               <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ a.pname }}</td>
                                 <td>{{ a.Date }}</td>
                                 <td>{{ a.Time }}</td>
@@ -65,8 +76,9 @@
                                     <td>{{ d.fname }} {{ d.lname }}</td>
                                   {% endif %}
                                 {% endfor %}
-                                <td><button type="button" class="btn btn-primary" onclick="cancel()">Cancel</button></td>
+                                <td><button name="patid" value="{{ a.id }}" type="submit" class="btn btn-primary"  onclick="cancel()">Cancel</button></td>
                               </tr>
+                            </form>
                             {% endif %}
                           {% endfor %}
                         </tbody>

@@ -65,7 +65,11 @@ def edit(request):
     return render(request,'edit.html',{"appointment":patappointment.objects.all(),"user":uusername,"doc":doctor.objects.all()})
 
 def cancel(request):
-    return render(request,'cancel.html',{"appointment":patappointment.objects.all(),"user":uusername,"doc":doctor.objects.all()})
+    if 'patid' in request.POST:
+        v = request.POST.get('patid')
+        print(v)
+        #return render(request,'chat.html',{"un":un})
+    return render(request,'cancel.html',{"appointment":patappointment.objects.all(),"user":uusername,"doc":doctor.objects.all(),"i":0})
 
 def logout_view(request):
     logout(request)
