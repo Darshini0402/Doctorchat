@@ -10,6 +10,8 @@ import time
 from django.http import HttpResponse
 import datetime
 
+#from doc.chat.views import index,room
+
 from .models import doctor, patappointment,user
 # Create your views here.saz
 
@@ -155,7 +157,7 @@ def appointment(request):
     if 'instant' in request.POST:
         un = request.POST.get('instant')
         print(un)
-        return render(request,'chat.html',{"un":un})
+        return render(request,'chat/index.html',{"un":un})
         #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
         global unl

@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'docchat',
-    # 'chat',
-    # 'channels',
+    'chat',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -72,16 +72,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'doc.wsgi.application'
-# ASGI_APPLICATION = 'doc.asgi.application'
+ASGI_APPLICATION = 'doc.asgi.application'
 
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [('127.0.0.1',80)],
-#         }
-#     }
-# }
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1',80)],
+        }
+    }
+}
 
 
 # Database
