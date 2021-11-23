@@ -11,7 +11,7 @@
     <script>
         function success()
         {
-            alert("Payment successful! Your booking has been confirmed");
+            alert("Payment successful! Your booking has been confirmed. Kindly fill the feedback form");
         }
     </script>
     <style>
@@ -133,7 +133,7 @@ body {
       </div>
   
       <div class="centre-content">
-        <form action="billing.html" method="POST">
+        <form action="feedback.html" method="POST">
             {% csrf_token %}
             {% for d in doc %}
                 {% if d.username == un %}
