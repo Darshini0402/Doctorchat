@@ -151,7 +151,7 @@ def appointment(request):
     if 'instant' in request.POST:
         un = request.POST.get('instant')
         print(un)
-        return render(request,'chat.html',{"un":un})
+        return render(request,'home.html',{"un":un})
         #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
         global unl

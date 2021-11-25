@@ -19,5 +19,6 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('docchat.urls'))
+    path('',include('docchat.urls')),
+    path('',include('dchat.urls'))
 ]
