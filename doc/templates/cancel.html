@@ -30,7 +30,11 @@
           function cancel()
           {
               alert("The selected appointment would be canceled. Are you sure you want to cancel it?");
-              
+              var td = event.target.parentNode;
+              var tr = td.parentNode; // the row to be removed
+              tr.parentNode.removeChild(tr);
+              //{% comment %} var element = el;
+              //element.remove(); {% endcomment %}
           }
         </script>
     </head>
@@ -57,7 +61,7 @@
                           {% for a in appointment %}
                             {% if a.uuname_id == user %}
                               <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ a.pname }}</td>
                                 <td>{{ a.Date }}</td>
                                 <td>{{ a.Time }}</td>

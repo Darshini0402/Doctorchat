@@ -51,7 +51,7 @@
                           {% for a in appointment %}
                             {% if a.uuname_id == user %}
                               <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ a.pname }}</td>
                                 <td>{{ a.pphone }}</td>
                                 <td>{{ a.Date }}</td>

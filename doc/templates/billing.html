@@ -167,33 +167,50 @@ body {
         <p>Pay using Credit or Debit card</p>
         <div class="card-number">
           <label> Card Number </label>
-          <input
-            type="text"
-            class="card-number-field"
-            placeholder="###-###-###"/>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" class="card-number-field" placeholder="####-####-####-####"/>
         </div>
-        <br />
+        <br>
         <div class="date-number">
           <label> Expiry Date </label>
-          <input class="date-number-field" type='date'
-                 placeholder="DD-MM-YY" />
+          <select name="month" id="month" onchange="changeVal()">
+              <option>JAN</option>
+              <option>FEB</option>
+              <option>MAR</option>
+              <option>APR</option>
+              <option>MAY</option>
+              <option>JUN</option>
+              <option>JUL</option>
+              <option>AUG</option>
+              <option>SEP</option>
+              <option>OCT</option>
+              <option>NOV</option>
+              <option>DEC</option>
+            </select>
+          <select name="year" id="year" onchange="changeVal()">
+              <option>2021</option>
+              <option>2022</option>
+              <option>2023</option>
+              <option>2024</option>
+              <option>2025</option>
+              <option>2026</option>
+              <option>2027</option>
+              <option>2028</option>
+              <option>2029</option>
+              <option>2030</option>
+              <option>2031</option>
+              <option>2032</option>
+            </select>
+          {% comment %} <input class="date-number-field" type='date' placeholder="MM/YY" /> {% endcomment %}
         </div>
         <div class="cvv-number">
           <label> CVV number </label>
-          <input type="text" class="cvv-number-field" 
-                 placeholder="xxx" />
+          <input type="password" class="cvv-number-field" type="tel" pattern="[0-9]{3}" placeholder="xxx">
         </div>
         <div class="nameholder-number">
           <label> Card Holder name </label>
-          <input
-            type="text"
-            class="card-name-field"
-            placeholder="Enter your Name"/>
+          <input type="text" class="card-name-field" placeholder="Enter your Name"/>
         </div>
-        <button type="submit" 
-                class="submit-now-btn" onclick="success()">
-          submit
-        </button>
+        <button type="submit" class="submit-now-btn" onclick="success()">Submit</button>
       </form>
         </div>
       </div>

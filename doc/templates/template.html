@@ -26,6 +26,17 @@
             background-color: red;
           }
         </style>
+        <script>
+          function cancel()
+          {
+              alert("The selected appointment would be canceled. Are you sure you want to cancel it?");
+              var td = event.target.parentNode;
+              var tr = td.parentNode; // the row to be removed
+              tr.parentNode.removeChild(tr);
+              //{% comment %} var element = el;
+              //element.remove(); {% endcomment %}
+          }
+        </script>
     </head>
     <body>
         <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Doctor Appointment Booking and Chat System</h1>
@@ -52,13 +63,13 @@
                           {% for a in appointment %}
                             {% if a.duname_id == doc %}
                               <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ a.pname }}</td>
                                 <td>{{ a.pphone }}</td>
                                 <td>{{ a.Date }}</td>
                                 <td>{{ a.Time }}</td>
                                 <td>{{ a.psymptoms }}</td>
-                                <td><button type="button" class="btn btn-primary">Delete</button></td>
+                                <td><button type="button" class="btn btn-primary" onclick="cancel()">Delete</button></td>
                               </tr>
                             {% endif %}
                           {% endfor %}
