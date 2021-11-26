@@ -150,18 +150,13 @@ def appointment(request):
     global unl
     if 'instant' in request.POST:
         un = request.POST.get('instant')
-        print(un)
         return render(request,'home.html',{"un":un})
         #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
         global unl
         unl = request.POST.get('later')
-        print(unl)
         return render(request,'appointment.html',{"un":unl, "doc":doctor.objects.all()})   
     # return render(request,'appointment.html')
-
-def chat(request):
-    return render(request,'chat.html')
 
 
 def billing(request):
@@ -176,9 +171,6 @@ def billing(request):
         cursor=connection.cursor()
         cursor.execute('INSERT INTO docchat_patappointment (pname,page,paadhar,pphone,Date,Time,psymptoms,duname_id,uuname_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',[pname,page,paadhar,pphone,Date,Time,psymptoms,unl,uusername])
         connection.commit()
-    global uni
-    uni = request.POST.get('later')
-    print(uni)
     return render(request,'billing.html',{"un":unl, "doc":doctor.objects.all()})
 
 def template(request):
@@ -188,7 +180,9 @@ def template(request):
     # cursor=connection.cursor()
     # cursor.execute('INSERT INTO docchat_appointment (Time,Date) VALUES (%s,%s)',[current_time,current_date])
     # connection.commit()
-    # connection.close()  
+    # connection.close() 
+    if 'docinstant' in request.POST:
+        return render(request,'home.html')
     return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dusername})
 
 def feedback(request):
