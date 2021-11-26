@@ -3,11 +3,15 @@ from django.shortcuts import render,redirect
 from . import models
 from dchat.models import Room,Message
 from django.http import HttpResponse, JsonResponse
+from docchat.models import doctor
 
 def home(request):
     return render(request, 'home.html')
 
 def room(request, room):
+    if 'instantapp' in request.POST:
+        global dun
+        dun = request.POST.get('instantapp')
     username = request.GET.get('username')
     room_details = Room.objects.get(name=room)
     return render(request, 'room.html',{
@@ -42,3 +46,6 @@ def getMessages(request, room):
     messages = Message.objects.filter(room = room_details.id)
 
     return JsonResponse({"messages":list(messages.values())})
+
+def billing(request):
+    return render(request,'billing.html',{"un":dun,"doc":doctor.objects.all()})

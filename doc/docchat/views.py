@@ -171,6 +171,9 @@ def billing(request):
         cursor=connection.cursor()
         cursor.execute('INSERT INTO docchat_patappointment (pname,page,paadhar,pphone,Date,Time,psymptoms,duname_id,uuname_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',[pname,page,paadhar,pphone,Date,Time,psymptoms,unl,uusername])
         connection.commit()
+    # elif 'instantapp' in request.POST:
+    #     dun = request.POST.get('instantapp')
+    #     return render(request,'billing.html',{"un":dun,"doc":doctor.objects.all()})
     return render(request,'billing.html',{"un":unl, "doc":doctor.objects.all()})
 
 def template(request):

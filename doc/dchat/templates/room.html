@@ -131,8 +131,12 @@
             {% csrf_token %}
             <input type="hidden" name="username" id="username" value="{{ username }}"/>
             <input type="hidden" name="room_id" id="room_id" value="{{ room_details.id }}"/>
-            <input type="text" name="message" id="message" width="100px" />
+            <input type="text" name="message" id="message" placeholder="Type your message" width="100px" />
             <input type="submit" value="Send">
+        </form>
+        <form action="billing.html" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="instantapp" value="{{ username }}">End Chat</button>
         </form>
     </div>
 
