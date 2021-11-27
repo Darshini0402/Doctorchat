@@ -3,7 +3,8 @@ from django.shortcuts import render,redirect
 from . import models
 from dchat.models import Room,Message
 from django.http import HttpResponse, JsonResponse
-from docchat.models import doctor
+from django.db import connection
+from docchat.models import doctor, patappointment
 
 def home(request):
     return render(request, 'home.html')
@@ -12,11 +13,19 @@ def room(request, room):
     if 'instantapp' in request.POST:
         global dun
         dun = request.POST.get('instantapp')
-    username = request.GET.get('username')
-    room_details = Room.objects.get(name=room)
-    return render(request, 'room.html',{
-        'username':username, 'room':room, 'room_details': room_details
-    })
+        cursor=connection.cursor()
+        cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[dun])
+        psw = cursor.fetchone()
+        if (psw==None):
+            return redirect(billingins)
+        else:
+            return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dun})
+    else:
+        username = request.GET.get('username')
+        room_details = Room.objects.get(name=room)
+        return render(request, 'room.html',{
+            'username':username, 'room':room, 'room_details': room_details
+        })
 
 def checkview(request):
     room=request.POST['room_name']
@@ -47,5 +56,7 @@ def getMessages(request, room):
 
     return JsonResponse({"messages":list(messages.values())})
 
-def billing(request):
+def billingins(request):
+    # if 'instantapp' in request.POST:
+    #     dun = request.POST.get('instantapp')
     return render(request,'billing.html',{"un":dun,"doc":doctor.objects.all()})

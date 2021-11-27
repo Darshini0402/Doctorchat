@@ -134,11 +134,11 @@
             <input type="text" name="message" id="message" placeholder="Type your message" width="100px" />
             <input type="submit" value="Send">
         </form>
-        <form action="billing.html" method="POST">
-        {% csrf_token %}
-        <button type="submit" name="instantapp" value="{{ username }}">End Chat</button>
-        </form>
     </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button type="submit" name="instantapp" value="{{ username }}">End Chat</button>
+        </form>
 
   </body>
 
