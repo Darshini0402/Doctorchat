@@ -137,6 +137,7 @@ body {
       <div class="centre-content">
         <form action="feedback.html" method="POST">
             {% csrf_token %}
+            {{ un }}
             {% for d in doc %}
                 {% if d.username == un %}
                 <h4> Consultation fee: Rs.{{ d.fee }}<span>/-</span></h4>

@@ -1,35 +1,68 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Login</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'login.css' %}">
-        <style>
-            #h4{
-                color: black; 
-                font-family: 'Times New Roman', Times, serif; 
-                font-weight: bold; 
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'user.css' %}">
+</head>
+<body>
+    <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
         {% if message%}
             <div style="text-align: center; font-size: larger; color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{message}}</div>
         {% endif %}
         <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
             <a href="patient.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
         </div>
-        <div class="bg-text">
-            <form action="{% url 'login' %}" method="POST">
-                {% csrf_token %}
-                <h4>Username: <input type="text" placeholder="Username" name="username"></h4>
-                <h4>Password: <input type="password" placeholder="Password" name="password"></h4>
-                <input type="submit" placeholder="Login">
-            </form>
-            <h4>Do not have an account? <a href="sign.html" style="color:black;">Sign in</a></h4>
-        </div>
-    </body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign In</h3>
+			</div>
+			<div class="card-body">
+				<form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Username" name="username">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="Password" name="password">
+					</div>
+					
+                    <br>
+					<div class="form-group">
+						<input type = "submit" value="Login" class="btn btn-dark">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links" style="color: white;">
+					Don't have an account?<a href="sign.html" style="color: white;"><br>Sign Up</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
 </html>

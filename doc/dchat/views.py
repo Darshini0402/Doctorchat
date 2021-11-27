@@ -13,6 +13,7 @@ def room(request, room):
     if 'instantapp' in request.POST:
         global dun
         dun = request.POST.get('instantapp')
+        print(dun)
         cursor=connection.cursor()
         cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[dun])
         psw = cursor.fetchone()
