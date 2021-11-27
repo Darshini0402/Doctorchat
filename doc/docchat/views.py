@@ -19,7 +19,7 @@ def login_view(request):
         # Accessing username and password from form data
         global uusername
         uusername = request.POST.get("username")
-        upassword = request.POST["password"]
+        upassword = request.POST.get("password")
         # Check if username and password are correct, returning User object if so
         cursor=connection.cursor()
         cursor.execute('SELECT password FROM docchat_user WHERE username=(%s)',[uusername])

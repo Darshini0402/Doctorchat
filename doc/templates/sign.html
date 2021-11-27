@@ -1,37 +1,75 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sign up</title>
-        <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <style>
-            #h4{
-                color: white; 
-                font-family: 'Times New Roman';
-                font-weight: bold; 
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <h4 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Doctor</h4>
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'user.css' %}">
+</head>
+<body>
+    <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: #ffff80; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
         {% if message%}
-            <div style="text-align: center; font-size: larger; color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{message}}</div>
+            <div style="text-align: center;font-size: 25px; color:white; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{message}}</div>
         {% endif %}
         <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
-            <a href="Login.html"><i class="material-icons" style="font-size: 40px; color: azure;">home</i></a>
+            <a href="Login.html"><i class="material-icons" style="font-size: 40px; color:  #ffb3ff;">home</i></a>
         </div>
-        <div class="bg-text" style="align-items: center;">
-            <form action="{% url 'user' %}" method="POST">
-                {% csrf_token %}
-                <h4>Username: <input type="text" placeholder="Username" name="uname"></h4>
-                <h4>Name: <input type="text" placeholder="name" name="name"></h4>
-                <h4>Email: <input type="email" placeholder="Email" name="mail"></h4>
-                <h4>Password: <input type="password" placeholder="Password" name="passw"></h4>
-                <input type="submit" value="Sign up">
-            </form>
-        </div>
-    </body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-body">
+				<form action="{% url 'user' %}" method="POST">
+                    {% csrf_token %}
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Username" name="uname">
+						
+					</div>
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Name" name="name">
+						
+					</div>
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						 <input type="email" class="form-control" placeholder="Email" name="mail">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="Password" name="passw">
+					</div>
+					
+                    <br>
+					<div class="form-group">
+						<input type = "submit" value="Sign Up" class="btn btn-dark">
+					</div>
+				</form>
+			</div>
+		
+			
+		</div>
+	</div>
+</div>
+</body>
 </html>
