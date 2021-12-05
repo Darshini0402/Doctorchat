@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -9,6 +9,8 @@ from django.http import HttpResponse
 import time
 from django.http import HttpResponse
 import datetime
+
+from dchat.views import home
 
 from .models import doctor, patappointment,user
 # Create your views here.saz
@@ -150,7 +152,8 @@ def appointment(request):
     global unl
     if 'instant' in request.POST:
         un = request.POST.get('instant')
-        return render(request,'home.html',{"un":un})
+        return redirect('home',{'duser': un})
+        #return render(request,'home.html',{"un":un})
         #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
         global unl

@@ -6,21 +6,24 @@ from django.http import HttpResponse, JsonResponse
 from django.db import connection
 from docchat.models import doctor, patappointment
 
-def home(request):
+def home(request,duser):
+    global d
+    d = duser
     return render(request, 'home.html')
 
 def room(request, room):
     if 'instantapp' in request.POST:
-        global dun
-        dun = request.POST.get('instantapp')
-        print(dun)
+        # global dun
+        # dun = request.POST.get('instantapp')
+        # print(dun)
+        print(d)
         cursor=connection.cursor()
-        cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[dun])
+        cursor.execute('SELECT password FROM docchat_doctor WHERE username=(%s)',[d])
         psw = cursor.fetchone()
         if (psw==None):
             return redirect(billingins)
         else:
-            return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dun})
+            return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":d})
     else:
         username = request.GET.get('username')
         room_details = Room.objects.get(name=room)
@@ -60,4 +63,4 @@ def getMessages(request, room):
 def billingins(request):
     # if 'instantapp' in request.POST:
     #     dun = request.POST.get('instantapp')
-    return render(request,'billing.html',{"un":dun,"doc":doctor.objects.all()})
+    return render(request,'billing.html',{"un":d,"doc":doctor.objects.all()})
