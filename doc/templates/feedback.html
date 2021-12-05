@@ -2,6 +2,22 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head><link rel="stylesheet" href="{% static 'feedback.css' %}">
+    <style>
+         .dev:hover{
+        cursor:pointer
+    }
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:purple;
+    color: white;
+    height:7%;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    }
+        </style>
 </head>
 <body>
 <!--Division for Modal-->
@@ -40,5 +56,11 @@
         </div>
     </div>
 </div>
+<div class="footer">
+    <table style="position: absolute; text-align: center;width: 100%;color: whitesmoke;">
+        <th class="dev" onclick="contact()" style="color: white;"><u>Contact Us</u></th>
+        <th  style="color: blue;"><a href="faq.html" style="color: white;">FAQ</a></th>
+        <th  style="color: blue;"><a href="aboutus.html" style="color: white;">About Us</a></th>
+    </table>
 </body>
 </html>

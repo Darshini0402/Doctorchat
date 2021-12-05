@@ -1,0 +1,296 @@
+.bg-image
+{
+    height: 100%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.info
+{
+    position: absolute; /* Position the background text */
+    bottom: 0; 
+    width: 100%; /* Full width */
+    padding: 10px; /* Some padding */
+}
+.info .content{
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 92.5%; /* Full width */
+    padding: 20px; /* Some padding */
+    height:67.25%;
+}
+ /* Style the tab */
+ .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    }
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    }
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+    background-color: #ddd;
+    }
+    .cancel:hover {
+        background-color: rgba(250, 26, 26, 0.836);
+        }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+    background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+        background-color:rgba(173, 138, 22, 0.842);
+    display:none;
+    width:95.5%;
+    height:300px;
+    position:absolute;
+    bottom:-56px;
+    }
+.dev_info:hover
+    {
+        background-color: #0000008a;
+        cursor:pointer;
+    }
+    button:hover{
+        background-color: #9575cd;
+
+    }
+    .login:hover{
+        background-color: #40e083;
+
+    }
+    .container[_ngcontent-msf-c3] {
+        width: 32vw;
+        margin-left: 3vw;
+        padding-left: .01vw;}
+        .column {
+            float: left;
+            width: 30.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+          }
+          
+          /* Display the columns below each other instead of side by side on small screens */
+          @media screen and (max-width: 650px) {
+            .column {
+              width: 100%;
+              display: block;
+            }
+          }
+          
+          /* Add some shadows to create a card effect */
+          .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          }
+          
+          /* Some left and right padding inside the container */
+          .container {
+            padding: 0 16px;
+          }
+          
+          /* Clear floats */
+          .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+          }
+          
+          .title {
+            color: grey;
+          }
+          
+          .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 1px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 40%;
+          }
+          
+          .button:hover {
+            background-color: #555;
+          }
+          .dev:hover{
+              background-color: coral;
+              cursor:pointer;
+          }
+          .btn {
+            background-color: rgb(30, 146, 255); /* Blue background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 12px 16px; /* Some padding */
+            font-size: 16px; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+          }
+          
+          /* Darker background on mouse-over */
+          .btn:hover {
+            background-color: RoyalBlue;
+          }
+#bgfaq img
+  {
+  width:100% ;height:auto;
+  }   
+  .col-sm-6
+  {
+  opacity: 0.6;
+  margin: 10px;
+  border: 1px solid black;
+  background-color: #ffffff;
+  filter: alpha(opacity=60);
+  box-sizing: content-box;
+width: 100%;
+padding: 5px;
+  }
+  .faqa
+  {
+    position: absolute;
+        z-index: 999;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 0%; /* Adjust this value to move the positioned div up and down */
+        width: 90%;
+  }
+.circlepic
+{
+  border-radius: 100px;
+
+}
+
+table {
+  table-layout: fixed ;
+  width: 100% ;
+}
+td {
+  width: 25% ;
+}
+
+
+
+          #bgfaq img
+          {
+          width:100% ;height:auto;
+          opacity: 0.17;
+          }   
+          .col-sm-6
+          {
+          opacity: 0.6;
+          margin: 10px;
+          border: 1px solid black;
+          background-color: #ffffff;
+          filter: alpha(opacity=60);
+          box-sizing: content-box;
+        width: 100%;
+        padding: 5px;
+          }
+          .faqa
+          {
+            position: absolute;
+                z-index: 999;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+                top: 0%; /* Adjust this value to move the positioned div up and down */
+                width: 90%;
+          }
+          .w3-button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 1px;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            background-color:rgb(76, 172, 135);
+            text-align: center;
+            cursor: pointer;
+            width: 20%;
+            height:80%;
+            padding-block: 10px;
+          }
+          .tablinks{
+            border:mediumpurple;
+            outline: 0;
+            display: inline-block;
+            padding: 1px;
+            font-size: 21px;
+            font-weight: 700;
+            font-family: 'Times New Roman', Times, serif;
+            font-style:inherit;
+            color:rgb(26, 5, 51);
+            background-color:rgb(119, 187, 233);
+            text-align: center;
+            cursor: pointer;
+            width: 10%;
+            height:10%;
+            padding-block: 10px;
+          }
+          .hi{
+            border:rgba(101, 101, 202, 0.835);
+            outline: 0;
+            display: inline-block;
+            padding: 1px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Times New Roman', Times, serif;
+            font-style:inherit;
+            color:rgb(26, 5, 51);
+            background-color:rgb(103, 238, 98);
+            text-align: center;
+            cursor: pointer;
+            width: 25%;
+            border-radius:15px;
+            box-shadow:0 4px rgb(99, 179, 179);
+            height:10%;
+          }
+          .hi:active{
+            transform: translateY(4px);
+            box-shadow:0 5px cyan;
+          }
+          .hi:hover{
+            background-color: #e1f682;
+          }
+         .het{ border:mediumpurple;
+            outline: 0;
+            display: inline-block;
+            padding: 1px;
+            font-size: 21px;
+            font-weight: 700;
+            font-family: 'Times New Roman', Times, serif;
+            font-style:inherit;
+            color:rgb(26, 5, 51);
+            background-color:rgb(255, 185, 73);
+            text-align: center;
+            cursor: pointer;
+            width: 30%;
+            height:15%;
+            padding-block: 10px;
+            border-radius: 9px;
+         }
+         .het:hover{
+           background-color:rgba(245, 200, 148, 0.89);
+         }
+          .pad{
+            padding:100px;
+          }
+          

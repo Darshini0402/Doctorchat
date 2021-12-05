@@ -12,6 +12,43 @@
                 font-weight: bold; 
                 text-align: center;
             }
+		.dev:hover{
+    cursor:pointer
+}
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color:purple;
+color: white;
+height:7%;
+text-align: center;
+font-family:'Times New Roman', Times, serif;
+}
+.bt {
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 6px rgb(140, 219, 140);
+}
+
+.bt:hover {background-color: #3e8e41}
+
+.bt:active {
+  background-color: #49b64c;
+  box-shadow: 0 2px rgb(103, 182, 109);
+  transform: translateY(4px);
+}
+
+
         </style>
     </head>
     <body>
@@ -24,8 +61,14 @@
                 {% csrf_token %}
                 <h4>Username: <input type="text" placeholder="Username" name="username"></h4>
                 <h4>Password: <input type="password" placeholder="Password" name="password"></h4>
-                <input type="submit" placeholder="Login">
+                <button style="width: 3cm; height: -1cm;"type="submit" class="bt" placeholder="Login">Submit</button>
             </form>
         </div>
+        <div class="footer">
+            <table style="position: absolute; text-align: center;width: 100%;color: whitesmoke;">
+                <th class="dev" onclick="contact()" style="color: white;">Contact Us</th>
+                <th  style="color: blue;"><a href="faq.html" style="color: white;">FAQ</a></th>
+                <th  style="color: blue;"><a href="aboutus.html" style="color: white;">About Us</a></th>
+            </table>
     </body>
 </html>

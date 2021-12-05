@@ -32,6 +32,21 @@
 			});
 		</script>
          <script src="datejs.js"> </script>
+         <style>
+             .dev:hover{
+                cursor:pointer
+            }
+            .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:purple;
+   color: white;
+   height:7%;
+   text-align: center;
+            }
+             </style>
     </head>
     <body>
         <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
@@ -43,7 +58,7 @@
             {% csrf_token %}
             {% for d in doc %}
                 {% if d.username == un %}
-                    <div class="container">
+                    <div class="container" style="color: rgb(2, 15, 87);">
                         <h4>Doctor : {{ d.fname }} {{ d.lname }}</h4><br></br>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -85,7 +100,13 @@
                     <br></br>
                 {% endif %}
             {% endfor %}
-            <button type="submit" class="btn btn-primary" name="appointment">Proceed with Billing</button>
+            <button type="submit" class="btn btn-primary" name="appointment" >Proceed with Billing</button>
         </form>
+        <div class="footer">
+            <table style="position: absolute; text-align: center;width: 100%;color: whitesmoke;">
+                <th class="dev" onclick="contact()" style="color: white;"><u>Contact Us</u></th>
+                <th  style="color: blue;"><a href="faq.html" style="color: white;">FAQ</a></th>
+                <th  style="color: blue;"><a href="aboutus.html" style="color: white;">About Us</a></th>
+            </table>
     </body>
 </html>

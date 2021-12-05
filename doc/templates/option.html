@@ -6,15 +6,45 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static 'login.css' %}">
+    	<style>
+            .dev:hover{
+        cursor:pointer
+    }
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:purple;
+    color: white;
+    height:7%;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    }
+    </style>
     </head>
     <body>
-        <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System</h1>
+        <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"><u> Doctor Appointment Booking and Chat System</u></h1>
         <br></br>
-            <a href="book.html"><span class="material-icons" style="width: 300px; height: 40px; text-align: center;">add</span></a>
+        <div class="apt" style="background-color: #abb7ec;height: 370px;
+        margin-top: auto;
+        margin-bottom: 100px;
+        margin-left:30%;
+        width: 600px;">
+        <div class="appt" style="font-size: 120%;color:#2a0d42;font-weight:bolder;margin-left: 35%;">
             <h4> Add Appointment </h4>
-            <a href="edit.html"><span class="material-icons" style="width: 300px; height: 40px; text-align: center;">edit</span></a>
-            <h4> Edit Appointment </h4>
-            <a href="cancel.html"><span class="material-icons" style="width: 300px; height: 40px; text-align: center;">cancel</span></a>
+            <a href="book.html"><span class="material-icons" style="width: 400px; height: 50px; text-align: center;">add</span></a>
+            <h4>Edit Appointment </h4>
+            <a href="edit.html"><span class="material-icons" style="width: 400px; height: 50px; text-align: center;">edit</span></a>
             <h4> Cancel Appointment </h4>
+            <a href="cancel.html"><span class="material-icons" style="width: 400px; height: 50px; text-align: center;margin-bottom: 20%;">cancel</span></a>
+        </div>
+        </div>
+        <div class="footer">
+            <table style="position: absolute; text-align: center;width: 100%;color: whitesmoke;">
+                <th class="dev" onclick="contact()" style="color: white;"><u>Contact Us</u></th>
+                <th  style="color: blue;"><a href="faq.html" style="color: white;">FAQ</a></th>
+                <th  style="color: blue;"><a href="aboutus.html" style="color: white;">About Us</a></th>
+            </table>
     </body>
 </html>

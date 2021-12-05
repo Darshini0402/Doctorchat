@@ -190,3 +190,9 @@ def template(request):
 
 def feedback(request):
     return render(request,'feedback.html')
+
+def aboutus(request):
+    return render(request,'aboutus.html')
+
+def faq(request):
+    return render(request,'faq.html')

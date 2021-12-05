@@ -15,4 +15,6 @@ urlpatterns = [
     path('template.html',views.template,name='template'),
     path('feedback.html',views.feedback,name="feedback"),
    # path('billing.html',views.transaction,name='transaction'),
+   path('aboutus.html',views.aboutus,name="aboutus"),
+   path('faq.html',views.faq,name="faq"),
 ]
