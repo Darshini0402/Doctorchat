@@ -18,4 +18,6 @@ urlpatterns = [
     path('aboutus.html',views.aboutus,name="aboutus"),
     path('faq.html',views.faq,name="faq"),
     path('editauthenticate.html',views.editauthenticate,name="editauthenticate"),
+    path('cancelauthenticate.html',views.cancelauthenticate,name="cancelauthenticate"),
+    path('editcontent.html',views.editcontent,name="editcontent"),
 ]

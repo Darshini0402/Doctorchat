@@ -1,0 +1,97 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>Authenticate</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'user.css' %}">
+	<style>
+		.dev:hover{
+    cursor:pointer
+}
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color:purple;
+color: white;
+height:7%;
+text-align: center;
+font-family:'Times New Roman', Times, serif;
+}
+</style>
+<script>
+    function cancel()
+    {
+        alert("The selected appointment would be canceled. Are you sure you want to cancel it?");
+        //var td = event.target.parentNode;
+        //var tr = td.parentNode; // the row to be removed
+        //tr.parentNode.removeChild(tr);
+        //{% comment %} var element = el;
+        //element.remove(); {% endcomment %}
+    }
+  </script>
+</head>
+<body>
+    <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
+        {% if message%}
+            <div style="text-align: center;font-size: 25px; color:black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{ message }}</div>
+        {% endif %}
+        <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
+            <a href="Login.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
+        </div>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-body">
+				<form action=" " method="POST">
+                    {% csrf_token %}
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Username" name="uname" required>
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="Password" name="passw" required>
+					</div>
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Booking ID" name="bookid" required>
+					</div>
+                    <br>
+					<div class="form-group">
+                        <a href="option.html"><button type="button" class="btn btn-primary" onclick="cancel()">Proceed to cancel</button></a>
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<table style="position: absolute; text-align: center;width: 100%;color: whitesmoke;">
+		<th class="dev" onclick="contact()" style="color: white;">Contact Us</th>
+		<th  style="color: blue;"><a href="faq.html" style="color: white;">FAQ</a></th>
+		<th  style="color: blue;"><a href="aboutus.html" style="color: white;">About Us</a></th>
+	</table>
+</body>
+</html>

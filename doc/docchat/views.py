@@ -160,7 +160,7 @@ def appointment(request):
         global unl
         unl = request.POST.get('later')
         return render(request,'appointment.html',{"un":unl, "doc":doctor.objects.all()})   
-    # return render(request,'appointment.html')
+    return render(request,'appointment.html')
 
 
 def billing(request):
@@ -225,9 +225,37 @@ def editauthenticate(request):
             for i in editbook:
                 if int(bookingid)==int(i[0]):
                     f=1
-                    return HttpResponseRedirect(reverse("edit"))
+                    return render(request,"editcontent.html")
             if (f!=1):
                 return render(request, "option.html",{"message":"Invalid Booking ID"})          
         else:
             return render(request, "option.html",{"message":"Invalid Credentials"})
     return render(request,'editauthenticate.html')
+
+
+def cancelauthenticate(request):
+    if request.method == "POST":
+        edituser = request.POST.get('uname')
+        editpass = request.POST.get('passw')
+        bookingid = request.POST.get('bookid')
+        cursor=connection.cursor()
+        cursor.execute('SELECT password FROM docchat_user WHERE username=(%s)',[edituser])
+        editans = cursor.fetchone()
+        f=0
+        if editans[0]==editpass:
+            cursor=connection.cursor()
+            cursor.execute('SELECT bookid FROM docchat_billing WHERE patuname_id=(%s)',[edituser])
+            editbook = cursor.fetchall()
+            for i in editbook:
+                if int(bookingid)==int(i[0]):
+                    f=1
+                    return HttpResponseRedirect(reverse("cancel"))
+            if (f!=1):
+                return render(request, "option.html",{"message":"Invalid Booking ID"})          
+        else:
+            return render(request, "option.html",{"message":"Invalid Credentials"})
+    return render(request,'cancelauthenticate.html')
+
+
+def editcontent(request):
+    return render(request,'editcontent.html')
