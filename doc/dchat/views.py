@@ -59,6 +59,4 @@ def getMessages(request, room):
     return JsonResponse({"messages":list(messages.values())})
 
 def billingins(request):
-    if 'instantapp' in request.POST:
-        dun = request.POST.get('instantapp')
     return render(request,'billing.html',{"un":dun,"doc":doctor.objects.all()})
