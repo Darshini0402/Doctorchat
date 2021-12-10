@@ -142,32 +142,34 @@ body {
                 <h4> Consultation fee: Rs.{{ d.fee }}<span>/-</span></h4>
                 <h4> GST : 10%<span>/-</span></h4>
                 <h4> Total amount : Rs.{% widthratio 1.1 1 d.fee %}<span>/-</span></h4>
+                <h4> Your Booking ID : {{ bookid }} <br> Please note this for future reference </h4>
                 {% endif %}
             {% endfor %}
             <!--<h6 class="price">Meal cost: Rs{{ meal_price }}<span>/-</span></h1>-->
       </div>
   
       <div class="last-content">
-        <button type="button" class="pay-now-btn">
+        {% comment %} <button type="button" class="pay-now-btn">
            Apply Coupons
         </button>
         <button type="button" class="pay-now-btn">
            Pay with Netbanking
-        </button>
+        </button> {% endcomment %}
   
         <!-- <button type="button" class="pay-now-btn">
         Netbanking options
         </button> -->
       </div>
+      <br>
+      <br>
       
-    
       <form action='feedback.html' method="POST">
         {% csrf_token %}
     <div class="card-details">
         <p>Pay using Credit or Debit card</p>
         <div class="card-number">
           <label> Card Number </label>
-          <input type="tel" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" class="card-number-field" placeholder="####-####-####-####"/>
+          <input type="tel" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" class="card-number-field" placeholder="####-####-####-####" name="cardno"/>
         </div>
         <br>
         <div class="date-number">
@@ -208,7 +210,7 @@ body {
         </div>
         <div class="nameholder-number">
           <label> Card Holder name </label>
-          <input type="text" class="card-name-field" placeholder="Enter your Name"/>
+          <input type="text" class="card-name-field" placeholder="Enter your Name" name="cardname"/>
         </div>
         <button type="submit" class="submit-now-btn" onclick="success()">Submit</button>
       </form>

@@ -43,3 +43,10 @@ class patappointment(models.Model):
 
     def __str__(self):
         return f" {self.pid}"
+
+class billing(models.Model):
+    cardname = models.CharField(max_length=120)
+    cardno = models.CharField(max_length=20)
+    bookid = models.PositiveBigIntegerField()
+    docuname = models.ForeignKey(doctor, on_delete=models.CASCADE, related_name='docuname')
+    patuname = models.ForeignKey(user, on_delete=models.CASCADE, related_name='patuname')

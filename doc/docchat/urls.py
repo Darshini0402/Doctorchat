@@ -14,5 +14,8 @@ urlpatterns = [
     path('cancel.html',views.cancel,name='cancel.html'),
     path('template.html',views.template,name='template'),
     path('feedback.html',views.feedback,name="feedback"),
-   # path('billing.html',views.transaction,name='transaction'),
+    # path('billing.html',views.transaction,name='transaction'),
+    path('aboutus.html',views.aboutus,name="aboutus"),
+    path('faq.html',views.faq,name="faq"),
+    path('editauthenticate.html',views.editauthenticate,name="editauthenticate"),
 ]

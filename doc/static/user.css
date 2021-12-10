@@ -86,3 +86,17 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+.dev:hover{
+    cursor:pointer
+}
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color:purple;
+color: white;
+height:7%;
+text-align: center;
+
+

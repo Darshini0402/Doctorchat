@@ -5,6 +5,8 @@
         <title>Patient Portal</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'login.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script>
             function changeVal()
             {
@@ -14,15 +16,60 @@
                 document.getElementById("chosenSpl").className="show"; {% endcomment %}
             }
         </script>
+        <style>
+            .bt {
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 6px rgb(140, 219, 140);
+}
+
+.bt:hover {background-color: #3e8e41}
+
+.bt:active {
+  background-color: #49b64c;
+  box-shadow: 0 2px rgb(103, 182, 109);
+  transform: translateY(4px);
+}
+.btn {
+  padding: 10px 20px;
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4550f1;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 6px rgb(99, 170, 236);
+}
+
+.btn:hover {background-color: #aa386d}
+
+.btn:active {
+  background-color: #49b64c;
+  box-shadow: 0 2px rgb(103, 182, 109);
+  transform: translateY(4px);
+}
+        </style>
     </head>
     <body>
-        <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;">Appointment Booking</h1>
+        <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"><u>Appointment Booking</u></h1>
         <a href="{% url 'logout' %}" style="position: absolute; top: 8px; right: 16px; font-size: 18px;">Log Out</a>
         <form action="" method="POST">
         {% csrf_token %}
-            <h4 style="display: inline-block; vertical-align: middle; margin: 10px 0;"> Please choose your preferred speciality :</h4>
-            <div style="display: inline-block; vertical-align: middle; margin: 10px 0;">
-                <select name="spl" id="spl" onchange="changeVal()">
+            <h4 style="display: inline-block; vertical-align: middle; margin-left: 10%;font-family: 'Times New Roman', Times, serif;font-size: 150%;color: crimson;margin-bottom: -6%;"> Please choose your preferred speciality :</h4>
+       <br>  
+       <div style="display: inline-block; vertical-align: middle; margin-left: 10%;margin-bottom: -8%;">
+                <br><select name="spl" id="spl" onchange="changeVal()">
                     <option value=""selected>Select speciality</option>
                     <option value="gp">General Physician</option>
                     <option value="gy">Gynaecologist</option>
@@ -36,9 +83,12 @@
                     <option value="den">Dentist</option>
                     <option value="ph">Physiotherapist</option>
                 </select>
-            </div>
             
-            <input type="submit" placeholder="Login">
+         
+            <button style="width: 3cm; height: -1cm;"type="submit" class="bt" placeholder="Login">Submit</button>
+            
+          
+            </div>
            
         </form>
         <div id="chosenSpl" class="hide">
@@ -49,7 +99,7 @@
         {% csrf_token %}
             {% for d in doc %}
                 {% if d.spl == spl %}
-                    <div class='bg-text' style="position: relative; top: 70px;">
+                    <div class="bg-text" style="position: relative; top:140px">
                         Name : {{ d.fname }} {{ d.lname }} <br></br>
                         Experience : {{ d.exp }} years <t></t>
                         Languages : {{ d.lang }} <br></br>

@@ -5,7 +5,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<title>Login Page</title>
+	<title>Authenticate</title>
    <!--Made with love by Mutiullah Samim -->
    
 	<!--Bootsrap 4 CDN-->
@@ -37,7 +37,7 @@ font-family:'Times New Roman', Times, serif;
 <body>
     <h1 style="font-weight: bold; font-family: 'Times New Roman', Times, serif; color: black; font-size: 50px; text-align: center;"> Doctor Appointment Booking and Chat System </h1>
         {% if message%}
-            <div style="text-align: center;font-size: 25px; color:black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{message}}</div>
+            <div style="text-align: center;font-size: 25px; color:black; font-weight: bold; font-family: 'Times New Roman', Times, serif;">{{ message }}</div>
         {% endif %}
         <div style="position: absolute; top: 30px; left: 20px; width: 100px;">
             <a href="Login.html"><i class="material-icons" style="font-size: 40px; color: black;">home</i></a>
@@ -46,7 +46,7 @@ font-family:'Times New Roman', Times, serif;
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-body">
-				<form action="{% url 'user' %}" method="POST">
+				<form action=" " method="POST">
                     {% csrf_token %}
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -55,35 +55,24 @@ font-family:'Times New Roman', Times, serif;
 						<input type="text" class="form-control" placeholder="Username" name="uname" required>
 						
 					</div>
-                    <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" class="form-control" placeholder="Name" name="name" required>
-						
-					</div>
-                    <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						 <input type="email" class="form-control" placeholder="Email" name="mail" required>
-						
-					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input type="password" class="form-control" placeholder="Password" name="passw" required>
 					</div>
-					
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Booking ID" name="bookid" required>
+					</div>
                     <br>
 					<div class="form-group">
-						<input type = "submit" value="Sign Up" class="btn btn-dark">
+						<input type = "submit" value="Proceed" class="btn btn-dark">
 					</div>
 				</form>
-			</div>
-		
-			
+			</div>	
 		</div>
 	</div>
 </div>

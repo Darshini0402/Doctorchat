@@ -9,6 +9,7 @@ from django.http import HttpResponse
 import time
 from django.http import HttpResponse
 import datetime
+import random
 
 from dchat.views import home
 
@@ -152,7 +153,7 @@ def appointment(request):
     global unl
     if 'instant' in request.POST:
         un = request.POST.get('instant')
-        return redirect('home',{'duser': un})
+        return render(request,'home.html',{"un":un})
         #return render(request,'home.html',{"un":un})
         #return HttpResponseRedirect(reverse("chat"),{"un":un})
     elif 'later' in request.POST:
@@ -163,6 +164,8 @@ def appointment(request):
 
 
 def billing(request):
+    global bookid
+    bookid = random.randint(100000,999999)
     if request.method == "POST":
         pname = request.POST.get('inputname')
         page = request.POST.get('inputage')
@@ -177,7 +180,7 @@ def billing(request):
     # elif 'instantapp' in request.POST:
     #     dun = request.POST.get('instantapp')
     #     return render(request,'billing.html',{"un":dun,"doc":doctor.objects.all()})
-    return render(request,'billing.html',{"un":unl, "doc":doctor.objects.all()})
+    return render(request,'billing.html',{"un":unl, "doc":doctor.objects.all(), "bookid":bookid})
 
 def template(request):
     # t = time.localtime()
@@ -192,4 +195,39 @@ def template(request):
     return render(request,'template.html',{"appointment":patappointment.objects.all(),"doc":dusername})
 
 def feedback(request):
+    if request.method == "POST":
+        cardnum = request.POST.get('cardno')
+        cardname = request.POST.get('cardname')
+    cursor=connection.cursor()
+    cursor.execute('INSERT INTO docchat_billing (cardname,cardno,bookid,docuname_id,patuname_id) VALUES (%s,%s,%s,%s,%s)',[cardname,cardnum,bookid,unl,uusername])
+    connection.commit()
     return render(request,'feedback.html')
+
+def aboutus(request):
+    return render(request,'aboutus.html')
+
+def faq(request):
+    return render(request,'faq.html')
+
+def editauthenticate(request):
+    if request.method == "POST":
+        edituser = request.POST.get('uname')
+        editpass = request.POST.get('passw')
+        bookingid = request.POST.get('bookid')
+        cursor=connection.cursor()
+        cursor.execute('SELECT password FROM docchat_user WHERE username=(%s)',[edituser])
+        editans = cursor.fetchone()
+        f=0
+        if editans[0]==editpass:
+            cursor=connection.cursor()
+            cursor.execute('SELECT bookid FROM docchat_billing WHERE patuname_id=(%s)',[edituser])
+            editbook = cursor.fetchall()
+            for i in editbook:
+                if int(bookingid)==int(i[0]):
+                    f=1
+                    return HttpResponseRedirect(reverse("edit"))
+            if (f!=1):
+                return render(request, "option.html",{"message":"Invalid Booking ID"})          
+        else:
+            return render(request, "option.html",{"message":"Invalid Credentials"})
+    return render(request,'editauthenticate.html')
