@@ -105,6 +105,9 @@
                         Languages : {{ d.lang }} <br></br>
                         Fee : Rs. {{ d.fee }}
                         City : {{ d.city }} <br></br>
+                        <svg width="20" height="20">
+                            <rect width="20" height="20" style="fill:#E9E612;stroke-width:3;stroke:rgb(0,0,0)" />
+                        </svg>
                         {% comment %} <label for="cl_{{ d.id }}"></label>  {% endcomment %}
                         <span><button name="instant" value="{{ d.username }}" style="left:30px; font-size:12px" class="btn" type="submit">Instant Appointment</button></span>
                         <span><button name="later" value="{{ d.username }}" style="left:30px; font-size:12px" class="btn" type="submit">Later Appointment</button></span><br>
